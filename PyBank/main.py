@@ -7,7 +7,7 @@ profits = []
 change_list = []
 greatest_increase = 0
 greatest_decrease = 0
-change = 0
+
 
 #create a path for file (check this later)
 csv_path = os.path.join('Resources', 'budget_data.csv')
@@ -24,8 +24,9 @@ with open(csv_path) as csv_file:
         months.append(row[0])
         profits.append(int(row[1]))
 
-    #goes through the profits to list comprehensions for profits
-    profits = [int(row) for row in profits]
+        #Create variable to store the total number of months and total profit in the dataset
+        total_months = len(months)
+        total_profits = sum(profits)
 
     # Using for loop through profits to calculate change_list
     for i in range(len(profits)):
@@ -48,8 +49,8 @@ with open(csv_path) as csv_file:
     summary = (
             f'Financial Analysis\n'
             f'--------------------------- \n'
-            f'Total Months: {len(months)} \n'
-            f'Total: ${sum(profits)} \n'
+            f'Total Months: {total_months} \n'
+            f'Total: ${total_profits} \n'
             f'Average Change: $ {average_change} \n'
             f'Greatest Increase in Profits: {max_month} $ {greatest_increase} \n'
             f'Greatest Decrease in Profits: {min_month} $ {greatest_decrease} \n'
