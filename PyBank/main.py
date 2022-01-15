@@ -1,3 +1,4 @@
+#Import modules os and csv
 import os
 import csv
 
@@ -9,14 +10,14 @@ greatest_increase = 0
 greatest_decrease = 0
 
 
-#create a path for file (check this later)
+#create a path for file 
 csv_path = os.path.join('Resources', 'budget_data.csv')
 
 #open and read csv
 with open(csv_path) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     # Read the header row first 
-    next(csv_reader)
+    header = next(csv_reader)
 
     # Read through each row of data after the header
     for row in csv_reader:
@@ -52,8 +53,8 @@ with open(csv_path) as csv_file:
             f'Total Months: {total_months} \n'
             f'Total: ${total_profits} \n'
             f'Average Change: $ {average_change} \n'
-            f'Greatest Increase in Profits: {max_month} $ {greatest_increase} \n'
-            f'Greatest Decrease in Profits: {min_month} $ {greatest_decrease} \n'
+            f'Greatest Increase in Profits: {max_month} (${greatest_increase}) \n'
+            f'Greatest Decrease in Profits: {min_month} (${greatest_decrease}) \n'
      )
     print(summary)
 
